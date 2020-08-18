@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>דף מעבר</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        $(document).ready(function () {
+            var id = localStorage.getItem("id");
+            var password = localStorage.getItem("password");
+            if (id == null && password == null) {
+                window.location.href = "/Login.html";
+            }
+            else {
+                var settings = {
+                    "url": "http://tamazdaily.azurewebsites.net/api/accesuser?code=x39R/QXphnzPHTiqMrDeFdI/wcNYPWdxbwxxtHQovT7U4OrFiaYlyA==&userName=" + id + "&password=" + password,
+                    "method": "POST",
+                    "timeout": 0
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    if (response != "-1") {
+                        window.location.href = "/HomePage.html";
+                    }
+                    else {
+                        window.location.href = "/Login.html";
+                    }
+
+                });
+            }
+            
+        });
+
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>

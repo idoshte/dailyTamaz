@@ -1,0 +1,236 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>תמונת מצב יומית</title>
+    <meta content="" name="descriptison">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/icofont/icofont.min.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="assets/vendor/venobox/venobox.css" rel="stylesheet">
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Gp - v2.1.0
+    * Template URL: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+    <link rel="manifest" href="/manifest.json" />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+                navigator.serviceWorker
+                    .register("/serviceWorker.js")
+                    .then(res => console.log("service worker registered"))
+                    .catch(err => console.log("service worker not registered", err))
+            });
+        }
+
+    </script>
+    <script>
+        var name;
+        $(document).ready(function () {
+            var id = localStorage.getItem("id");
+            var password = localStorage.getItem("password");
+            if (id == null || password == null)
+                window.location.href = "/Login.html";
+            else {
+                var settings = {
+                    "url": "http://tamazdaily.azurewebsites.net/api/accesuser?code=x39R/QXphnzPHTiqMrDeFdI/wcNYPWdxbwxxtHQovT7U4OrFiaYlyA==&userName=" + id + "&password=" + password,
+                    "method": "POST",
+                    "timeout": 0
+                };
+
+                $.ajax(settings).done(function (response) {
+                    console.log(response);
+                    if (response == "-1") {
+                        window.location.href = "/Login.html";
+                    }
+                    else {
+                        response = response.split(",");
+                        name = response[0];
+                        $('#name').text("שלום " + name);
+                    }
+                });
+            }
+
+            var date = new Date();
+            var day = date.getDate();
+            var month = date.getMonth();
+            var year = date.getFullYear();
+            month = month + 1;
+            if (month < 10)
+                month = "0" + month;
+            if (day < 10)
+                day = "0" + day;
+            $('#date').text(day + "/" + month + "/" + year);
+        });
+        function leave() {
+            localStorage.clear();
+            window.location.href = "/Login.html";
+        }
+    </script>
+</head>
+
+<body>
+
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top ">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <h1 dir="rtl" class="logo"><a href="index.html"> תמ"צ יומי</a></h1>
+            <!-- Uncomment below if you prefer to use an image logo -->
+            <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+
+            <nav dir="rtl" class="nav-menu d-none d-lg-block">
+                <ul>
+                    <li class="active"><a href="index.html">דף הבית</a></li>
+                    <li><a href="#about">אודות האפליקצייה</a></li>
+
+                    <li><a href="/Login.html">התנתק</a></li>
+
+                </ul>
+            </nav><!-- .nav-menu -->
+
+        </div>
+    </header><!-- End Header -->
+    <!-- ======= Hero Section ======= -->
+    <section dir="rtl" id="hero" class="d-flex align-items-center justify-content-center">
+        <div class="container" data-aos="fade-up">
+            <img src="images/pakar.png" style="align-content:center;width:120px;height:120px;margin-bottom:10px" />
+            <h4 id="name" style="margin-left:5px;color:white;font-family:Tahoma;font-size:14px"></h4>
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="150">
+                <div class="col-xl-6 col-lg-8">
+                    <h1>תמונת מצב יומית</h1>
+                    <h2 id="date"></h2>
+                </div>
+            </div>
+
+            <div class="row mt-5 justify-content-center" data-aos="zoom-in" data-aos-delay="250">
+                <div class="col-xl-2 col-md-4 col-6">
+                    <div class="icon-box">
+                        <i class="ri-store-line"></i>
+                        <h3><a href="/Deatails.html">סד"כ ואמצעים</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6 ">
+                    <div class="icon-box">
+                        <i class="ri-bar-chart-box-line"></i>
+                        <h3><a href="/Deatails.html"> עדכונים מבצעיים וקורונה</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6 mt-4 mt-md-0">
+                    <div class="icon-box">
+                        <i class="ri-calendar-todo-line"></i>
+                        <h3><a href="/Deatails.html">הנחיות מדיונים חיצוניים</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6 mt-4 mt-xl-0">
+                    <div class="icon-box">
+                        <i class="ri-paint-brush-line"></i>
+                        <h3><a href="/Deatails.html">עדכוני התרעה</a></h3>
+                    </div>
+                </div>
+
+                <div class="col-xl-2 col-md-4 col-6 mt-4 mt-xl-0">
+                    <div class="icon-box">
+                        <i class="ri-database-2-line"></i>
+                        <h3><a href="/Deatails.html">הערכה ומחקר</a></h3>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-md-4 col-6 mt-4 mt-xl-0">
+                    <div class="icon-box">
+                        <i class="ri-database-2-line"></i>
+                        <h3><a href="/Deatails.html">שונות</a></h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Hero -->
+    <!-- <main id="main">-->
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+        <div class="container" data-aos="fade-up">
+
+            <div class="row">
+                <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="data:image/jpeg;base64,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" class="img-fluid" alt="">
+                </div>
+                <div dir="rtl" class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="100">
+                    <h3 dir="rtl">אפליקציית תמונת מצב יומית פיקוד העורף.</h3>
+                    <p dir="rtl" class="font-italic">
+                        האפליקציה פותחה כיוזמה עי ענף התרעה ושוב בפקער. האפלקצייה מעניקה פלטפורמה אחודה ומאובטחת לקבלת תמצ ברורה. שימוש באפלקצייה הן כלחימה בקורונה והן ככלי ניהולי יומימי.
+                    </p>
+                    <ul>
+                        <li dir="rtl"><i class="ri-check-double-line"></i> פלטפורמה אחודה</li>
+                        <li dir="rtl"><i class="ri-check-double-line"></i> אבטחת מידע מרבית</li>
+                        <li dir="rtl"><i class="ri-check-double-line"></i> ממשק הזנה נוח ובהיר למשתמש</li>
+                    </ul>
+                    <p>
+                        הנתונים יתעדכנו אוטמטית עי בעלי תפקידים רלוונטים
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <footer>
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Gp</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <!-- All the links in the footer should remain intact. -->
+            <!-- You can delete the links only if you purchased the pro version. -->
+            <!-- Licensing information: https://bootstrapmade.com/license/ -->
+            <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/gp-free-multipurpose-html-bootstrap-template/ -->
+            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </div>
+    </div>
+    </footer><!-- End Footer -->
+
+    <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/jquery.easing/jquery.easing.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/owl.carousel/owl.carousel.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/venobox/venobox.min.js"></script>
+    <script src="assets/vendor/waypoints/jquery.waypoints.min.js"></script>
+    <script src="assets/vendor/counterup/counterup.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

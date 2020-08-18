@@ -1,0 +1,18 @@
+{
+  "name": "תמונת מצב עורף ",
+  "short_name": "תמ''צ עורף",
+  "start_url": "HomePage.html",
+  "display": "standalone",
+  "background_color": "#fdfdfd",
+  "theme_color": "#db4938",
+  "orientation": "portrait-primary",
+  "icons": [
+
+
+    {
+      "src": "/images/pakar.png",
+      "type": "image/png",
+      "sizes": "1200x1200"
+    }
+  ]
+}
